@@ -1,4 +1,5 @@
 <?php
-$app['database']->insert('posts', [
+
+App::get('database')->insert('posts', [
     'title' => $_POST['title']
 ]);
