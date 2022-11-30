@@ -1,5 +1,4 @@
 <?php
-$db = require 'core//bootstrap.php';
+$db = require 'core/bootstrap.php';
 
-$posts = $db->selectAll('posts');
-var_dump($posts);
+require Router::load('routes.php')->direct(Request::uri(), Request::method());

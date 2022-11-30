@@ -1,6 +1,13 @@
 <?php
+$app = [];
+
+require __DIR__ . '/../utils/functions.php';
 require 'Database/Database.php';
 require 'Database/Query.php';
-$config = require 'config.php';
+$app['config'] = require 'config.php';
+require 'core/Request.php';
+require 'core/Router.php';
 
-return new Query(Database::connect($config, 'root', 'Basia2501'));
+
+
+$app['database'] = new Query(Database::connect($app['config'], 'root', 'Basia2501'));
