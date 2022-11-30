@@ -1,8 +1,11 @@
 <?php
+
+namespace App\Core\Database;
+
 class Query
 {
     protected $pdo;
-    public function __construct(PDO $pdo)
+    public function __construct(\PDO $pdo)
     {
         $this->pdo = $pdo;
     }
@@ -11,7 +14,7 @@ class Query
         $stmt = $this->pdo->prepare("SELECT * FROM {$table}");
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
     public function insert($table, $params)
@@ -25,7 +28,7 @@ class Query
         try {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die($e->getMessage());
         }
     }
